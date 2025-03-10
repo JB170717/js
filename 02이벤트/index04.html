@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>this키워드와 innerHTML</h3>
+    <!-- 버튼태그 그자체를 지칭 this -->
+    <button type="button" onclick="some(this)">버튼의 사이값</button>
+    
+    <script>
+        function some(나자신){
+            //버튼 태그를 핸들링 할 수 있도록 태그를 얻는 작업이 필요함
+            //console.log(나자신);
+            //console.log(나자신.innerHTML);
+            나자신.innerHTML="바꿀값";            
+        }
+    </script>
+
+    <hr>
+
+    <button type="button" id="example">이벤트에서 this</button>
+
+    <script>
+        //this키워드가 사용위치에 따라 조금 다를 수 있음.
+        
+        var x = 1;
+        function func(){
+            //일반함수에서 this키워드는 window객체가 됩니다. 
+            console.log(this);
+            console.log(this.x);            
+        }
+        func();
+
+        var example = document.getElementById("example");
+        example.onclick=function(){
+            //이벤트가 걸린 태그가 됩니다.
+            console.log(this);             
+        }
+    </script>
+
+</body>
+</html>
