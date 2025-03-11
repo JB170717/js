@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>자바스크립트 (value속성을 이용해서 카운트처리 하세요요)</h3>
+
+    <input type="number" id="cnt" value="0">
+    <button type="button" class="plus">+</button>
+    <button type="button" class="minus">-</button>
+
+    <script>
+
+        var cnt = document.getElementById("cnt");
+
+        var plus = document.querySelector(".plus");
+        var minus = document.querySelector(".minus");
+        
+
+        plus.onclick = function(){
+            cnt.value++;
+        }
+        minus.onclick = function(){
+            if(cnt.value==0){
+                alert('0보다 작을수 없습니다.');
+                return;
+            }
+            cnt.value--;
+        }
+
+    </script>
+
+</body>
+</html>

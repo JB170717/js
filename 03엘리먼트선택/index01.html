@@ -8,10 +8,11 @@
 <body>
     
     <!-- 
-    getElementByID
+    getElementByID -단수형으로 받기떄문에 태그1개만 받음음
     getElementsByName - 복수형
     getElementsByClassName - 복수형
-    getElementsByTagName - 복수형형
+    getElementsByTagName - 복수형
+    복수형들은 list로 받기때문에 반복문으로 접근해야한다다
     -->
 
     <button type="button" id="btn1">체크박스요소 확인하기</button>
@@ -62,9 +63,8 @@
         // console.log(tags);   
 
         var sel =document.getElementById("sel");
-        var options = sel.getElementsByTagName("option");
+        var options = sel.getElementsByTagName("option"); //재탐색
         console.log(options);
-        
 
     </script>
 

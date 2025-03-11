@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>css속성 제어하기</h3>
+    
+    <section>
+
+        <img src="img/1.jpg" alt="대표이미지" width="200" class="profile-img" style="border: 3px solid #000;">
+
+        <select id="season">
+            <option value="1.jpg">봄</option>
+            <option value="2.jpg">여름</option>
+            <option value="3.jpg">가을</option>
+            <option value="4.jpg">겨울</option>
+        </select>
+
+        <input type="color" class="profile-color" >
+
+    </section>
+
+    <script>
+        var profileImg = document.querySelector(".profile-img");
+        var profileColor = document.querySelector(".profile-color");
+        var season = document.getElementById("season");
+        season.onchange = function() {
+            profileImg.src = 'img/' + season.value;
+        }
+
+        profileColor.addEventListener("change", function() {
+            //console.log(profileColor.value);
+            //css속성은 style로 접근합니다.
+            
+            //profileImg.style.borderColor = profileColor.value;
+            profileImg.style.border = "3px solid " + profileColor.value;
+        })
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" placeholder="이름을 입력하세요" class="name" >
+    <button type="button" id="nameck">확인</button><br>
+    <strong id="transparent" style="display: none;"></strong>
+
+    <input type="text" placeholder="당신의 할일을 적으세요" class="todo">
+    <button type="button" id="todock">확인</button>
+    <ul class="list">
+
+    </ul>
+
+    <script>
+        
+        var nameInput = document.querySelector(".name");
+        var nameck =document.getElementById("nameck");
+        var transparent =document.getElementById("transparent");   
+        
+        nameck.onclick = function(){            
+            transparent.innerHTML="<strong>"+ nameInput.value +"님 안녕하세요</strong>";
+            transparent.style.display="block";
+
+            nameInput.style.display="none";
+            nameck.style.display="none";
+        }
+
+        ////////////////////////
+
+        var todo = document.querySelector(".todo");
+        var todock =document.getElementById("todock");
+        var list =document.querySelector(".list");
+
+        todock.onclick = function(){
+            var li =document.createElement("li");
+            var a = document.createElement("a");
+
+            a.innerHTML=todo.value + "<button>x</button>";
+            li.append(a);
+            list.append(li);
+        }
+    </script>
+</body>
+</html>
