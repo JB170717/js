@@ -40,20 +40,93 @@
         var todoForm = document.querySelector(".todoForm");
         var todo = todoForm.querySelector("input");
         var todoButton = todoForm.querySelector("button");
-        var todoList = document.querySelector(".todoList");
+        var todoList = document.querySelector(".todoList"); //ul
 
         todoButton.onclick= function(){
             var li = document.createElement("li");
             var btn = document.createElement("button");
-            btn.innerHTML="X";
-            
-            li.innerHTML = todo.value;
-            li.appendChild(btn);            
-            todo.innerHTML=""; //공백으로
+            btn.innerHTML="X";            
+            //삭제제
+            btn.addEventListener("click", remove);
 
-            todoList.appendChild(li);
+            li.innerHTML = todo.value;
+            li.appendChild(btn);
+            todo.value=""; //공백으로    
+
             
+
+            //올리기
+            var upBtn = document.createElement("button");
+            upBtn.innerHTML="↑";
+            upBtn.addEventListener("click", up);  
+            li.appendChild(upBtn); 
+
+            //downBtn
+            var downBtn = document.createElement("button");
+            downBtn.innerHTML="↓";
+            downBtn.addEventListener("click",down);
+            li.appendChild(downBtn); 
+            
+            todoList.appendChild(li);
         }
+        
+        function remove(){
+           //todoList.removeChild(this.parentElement);
+
+           this.parentElement.remove();
+        };
+        
+        function up(){         
+           
+            var current =this.parentElement; //li
+            var prev =current.previousElementSibling;
+
+            if(prev==null){
+                return;
+            }
+
+            if(confirm('이동하시겠습니까')){
+                todoList.insertBefore(current,prev);
+            }
+            
+        };
+
+        function down(){
+           
+            var current = this.parentElement;
+            var next = current.nextElementSibling;
+
+            if(next==null){
+                return;
+            }
+            if(confirm('이동할래?')){
+                todoList.insertBefore(next, current);
+            }
+            
+        };
+
+
+       
+    
+        
+
+    
+
+
+
+        // down.onclick = function down(){
+
+        //     var current = down.parentElement;
+        //     var next =  current.nextElementSibling;
+        //     todoList.insertBefore(next,current); //ul
+
+        // };;
+        
+
+
+        // function up(){
+
+        // };
     </script>
 
 

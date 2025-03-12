@@ -38,22 +38,30 @@
     </table>
 
     <script>
-        var todoList= document.querySelector(".todoList");
-        var trd = todoList.querySelector(".trd");  
-
+        var todoList= document.querySelector(".todoList");    
         var addList =document.getElementById("addList");
         var addLists =document.getElementById("addLists");
 
-        addList.onclick = function(){     
-            
-            var trd = document.createElement("tr");  
-            trd.innerHTML=
-            '<td><input type="text" size="3"></td>'
-            '<td><input type="text"></td>'
-            '<td><input type="text" size="5"></td>'
-            '<td><input type="text"></td> '; 
-            todoList.appendChild(trd)
-        };
+        addList.addEventListener("click",function(){
+            createTr();
+        });
+
+        addLists.addEventListener("click",function(){
+            for(var i=1;i<=5;i++){
+                createTr();
+            }
+        });
+
+        /* 재사용을 위해 함수선언 */
+        function createTr(){
+
+            var tr= document.createElement("tr");
+            tr.innerHTML=   '<td><input type="text" size="3"></td>'+
+                            '<td><input type="text"></td>'+
+                            '<td><input type="text" size="5"></td>'+
+                            '<td><input type="text"></td>';
+            todoList.appendChild(tr);
+        }
         
 
     </script>
