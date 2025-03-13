@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .content {
+            overflow: hidden;
+            border: 1px solid #777;
+        }
+        .content,
+        .content .left,
+        .content .right {
+            width: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .content .right,
+        .content .left {
+            float:left;
+        }
+        .left .inner,
+		.right .control,
+        .right .inner {
+            border: 1px solid #777;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+
+</head>
+<body >
+    
+    <header>
+        <div class="center">
+            <h2>토글형태 활용하기</h2>
+            <button id="btn1" class="dark">어둡게보기</button>
+            <button id="btn2" class="name">이름보기</button>
+
+            <hr>
+        </div>
+    </header>
+    
+    <section>
+        <div class="content">
+            <div class="left">
+                <div class="inner"><img src="profile.png"></div>
+            </div>
+            <div class="right">
+                <div class="inner">
+                    <p>자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 사이드 네트워크 프로그래밍에도 사용되고 있다</p>
+                    <a href="https://www.naver.com">위키백과</a>
+                </div>
+				
+				<div class="control" style="display: none;">
+                    <p>홍길자<br>20세<br>능력단위<br>Java, Oracle, JSP, CSS, Javascript</p>
+ 
+                </div>
+            </div>            
+        </div>
+    </section>
+
+
+    <script>
+        var h2 = document.querySelector(".center > h2");
+        var p1 = document.querySelector(".inner p");
+        var p2 = document.querySelector(".control p");
+        var a = document.querySelector(".right a");
+
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function() {
+            //dark클래스가 있으면, 배경색 검색은, 글자색 흰색
+            //dark클래스가 없으면, 배경색 흰색, 글자색 검은색
+            if(btn1.classList.contains("dark")) { //있으면
+                document.body.style.backgroundColor = "black"; 
+                h2.style.color = "white";
+                p1.style.color = "white";
+                p2.style.color = "white";
+                a.style.color = "white";
+                btn1.innerHTML = "밝게보기"
+            } else { //없으면
+                document.body.style.backgroundColor = "white"; 
+                h2.style.color = "black";
+                p1.style.color = "black";
+                p2.style.color = "black";
+                a.style.color = "black";
+            }
+
+            btn1.classList.toggle("dark");
+        }
+
+        //
+        var btn2 = document.getElementById("btn2");
+        var inner = document.querySelector(".right > .inner");
+        var control = document.querySelector(".right > .control");
+
+        btn2.onclick =function(){
+            //name 클래스가 있으면, 이름을 보이도록 하고
+            //name 클래스가 없으면, 컨텐츠를 보이도록 함.
+            
+            if(btn2.classList.contains("name")){
+                control.style.display="block";
+                inner.style.display="none";
+                btn2.innerHTML="내용보기";
+            }else{
+                control.style.display="none"
+                inner.style.display="block";
+                btn2.innerHTML="이름보기";
+            }
+            btn2.classList.toggle("name");
+
+        }
+
+    </script>
+
+</body>
+</html>

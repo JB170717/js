@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        .body {
+            color: black;
+            background-color: white;
+        }
+        .body.dark{
+            color: white;
+            background-color: black;
+        }
+
+        .center {
+            text-align: center;
+        }
+        .content {
+            overflow: hidden;
+            border: 1px solid #777;
+        }
+        .content,
+        .content .left,
+        .content .right {
+            width: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .content .right,
+        .content .left {
+            float:left;
+        }
+        .content .right .inner.view{
+            display: none;            
+        }
+
+        .control{
+            display: none;
+        }
+        
+        .content .right .control.view {
+            display: block; 
+        }
+
+        .left .inner,
+		.right .control,
+        .right .inner {
+            border: 1px solid #777;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+
+</head>
+<body class="body">
+   
+    <header>
+        <div class="center">
+            <h2>토글형태 활용하기</h2>
+            <button id="btn1" class="dark">어둡게보기</button>
+            <button id="btn2" class="name">이름보기</button>
+
+            <hr>
+        </div>
+    </header>
+    
+    <section>
+        <div class="content">
+            <div class="left">
+                <div class="inner"><img src="profile.png"></div>
+            </div>
+            <div class="right">
+                <div class="inner">
+                    <p>자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 사이드 네트워크 프로그래밍에도 사용되고 있다</p>
+                    <a href="https://www.naver.com">위키백과</a>
+                </div>
+				
+				<div class="control" >
+                    <p>홍길자<br>20세<br>능력단위<br>Java, Oracle, JSP, CSS, Javascript</p>
+ 
+                </div>
+            </div>            
+        </div>
+    </section>
+
+    <script>
+        var body =document.querySelector(".body");
+        var control =document.querySelector(".control");
+        var inner = document.querySelector(".right .inner");
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+
+        btn1.onclick=function(){
+            //dark클래스가 있으면 배경색 검은색, 글자색 흰색
+            //dark클래스가 없으면 배경색 흰색, 글자색 검은색
+            
+            body.classList.toggle("dark");
+            if(body.classList.contains("dark")){
+                btn1.innerHTML="밝게보기";
+            }else{
+                btn1.innerHTML="어둡게보기";
+            }            
+        }
+
+        btn2.onclick=function(){
+            control.classList.toggle("view");
+            inner.classList.toggle("view");
+
+            if(control.classList.contains("view")){
+                btn2.innerHTML="내용보기";
+            }else{
+                btn2.innerHTML="이름보기";
+            }
+            
+        }
+
+
+    </script>
+
+
+</body>
+</html>
