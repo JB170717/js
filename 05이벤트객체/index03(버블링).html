@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .some1{width: 300px; height: 300px; background-color: red;}
+        .some2{width: 200px; height: 200px; background-color: yellow;}
+        .some3{width: 100px; height: 100px; background-color: blue;}
+    </style>
+
+</head>
+<body>
+    
+    <div class ="some1">
+        <div class="some2">
+            <div class="some3">some3(자식)</div>
+        </div>
+    </div>
+
+    <script>
+        //이벤트 버블링(dom에서 이벤트 동작방식)
+        //자식 -> 부모로 이벤트가 실행되는 특성
+        //
+        var some1 =document.querySelector(".some1");
+        var some2 =document.querySelector(".some2");
+        var some3 =document.querySelector(".some3");
+
+        // some1.addEventListener("click",function(){
+        //     alert('some1이벤트 실행');
+        // })
+        // some2.addEventListener("click",function(){
+        //     alert('some2이벤트 실행');
+        //     event.stopPropagation(); //이벤트 버블링을 멈춤
+        //     //버블링은 특별한 경우가 아니라면 사실 멈출 필요는 없습니다.
+        // })
+        // some3.addEventListener("click",function(){
+        //     alert('some3이벤트 실행');
+        // })
+
+        //이벤트 캡쳐링 -> 부모, 자식이 이벤트가 걸려있을 때 , 부모 -> 자식을 이벤트가 동작함
+        //특별한 경우가 아니면 캡쳐링 페이지를 쓰지 않음
+        some1.addEventListener("click",function(){
+            alert('some1이벤트 실행');
+        }, true);
+        some2.addEventListener("click",function(){
+            alert('some2이벤트 실행');
+            event.stopPropagation();
+        }, true);
+        some3.addEventListener("click",function(){
+            alert('some3이벤트 실행');
+        }, true);
+    </script>
+
+</body>
+</html>

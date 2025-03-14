@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>모든태그에는 데이터를 저장할 수 있는 속성을 제공함</h3>
+
+    <ul class="box">
+        <li><a href="#" data-내마음대로이름='{"age": 20,"addr":"서울"}'>홍길동</a></li> <!-- 태그에 데이터를 넣는방법 -->
+        <li><a href="#" data-내마음대로이름='{"age": 30,"addr":"경기"}'>이순신</a></li>
+        <li><a href="#" data-내마음대로이름='{"age": 40,"addr":"부산"}'>세종대왕</a></li>
+    </ul>                
+
+    <script>
+        var box =document.querySelector(".box");
+        box.onclick =function(){
+            event.preventDefault(); //고유이벤트 중단
+            if(event.target.tagName != "A") return; //A아니면 중단
+            
+            //date - 속성은 dataset속성에 저장이 됩니다.
+            //console.dir(event.target);
+            
+            //console.log(event.target.dataset["내마음대로이름"]);
+            //console.log(event.target.dataset.내마음대로이름);
+            
+            var data = event.target.dataset.내마음대로이름; //제이슨방식으로 데이터를 넣어둠둠
+            var obj =JSON.parse(data);
+            console.log(obj);
+            
+        
+        }
+
+    </script>
+
+</body>
+</html>

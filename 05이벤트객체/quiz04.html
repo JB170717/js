@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .toggle li {    
+            display: inline-block;
+            padding: 15px 20px 14px;
+            width: 25%; 
+            text-align: center;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .toggle-menu {display: none;}
+        .active { display: block; animation: fade-in 0.5s ease-in-out;}
+
+        /* 
+        태그에 애니메이션을 넣는 방법
+        1.trasition
+        2.animation
+        예시애니메이션 사이트 https://michalsnik.github.io/aos/
+        그래픽애니메이션 로티
+        */
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                margin-left: -100px;
+            } to {
+                opacity: 1;
+                margin-left: 0px;
+            }
+        }      
+    </style>
+
+</head>
+<body>
+
+	<h3>토글탭 - 메뉴버튼에 따라 다른 화면이 보여지도록 하는 탭버튼입니다. </h3>
+    <pre>
+    1. ul에 이벤트 버블링을 이용해서 클릭이벤트를 걸고 클릭되는 타겟의 data-id를 얻습니다.
+    2. toggle-data > toggle-menu의 active속성을 삭제(active속성은 display를 보여지게 합니다)
+    3. data-id의 값에 알맞는 태그에 active속성을 추가하면됩니다.
+    </pre>
+		
+    <section>
+    <ul class="toggle">
+        <li data-id="#toggle1">메뉴1</li>
+        <li data-id="#toggle2">메뉴2</li>
+        <li data-id="#toggle3">메뉴3</li>
+    </ul>
+
+    <div class="toggle-data">
+        <div class="toggle-menu active" id="toggle1">
+            토글메뉴1
+        </div>
+        <div class="toggle-menu" id="toggle2">
+            토글메뉴2
+        </div>
+        <div class="toggle-menu" id="toggle3">
+            토글메뉴3
+        </div>
+    </div>
+
+    </section>
+
+    <script>
+        var toggle = document.querySelector(".toggle");
+        toggle.onclick =function(){                    
+            
+            if(event.target.tagName !="LI") return;
+
+            var target =event.target.dataset.id;
+
+            //2. 기존 엑티브 삭제
+            var preActive=document.querySelector(".toggle-menu.active");                    
+            preActive.classList.remove("active");
+            
+            //3. 엑티브 추가
+            var menu=document.querySelector(target);
+            menu.classList.add("active"); 
+
+        }
+    </script>
+
+</body>
+</html>
