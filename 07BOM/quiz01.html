@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bgImg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    
+    <div class="clock">
+        <h3>00:00:00</h3>
+    </div>
+<!-- 
+    <img src="img/1.jpg" class="bgImg" alt="1">
+ -->
+    <script>
+        var clock = document.querySelector(".clock > h3");
+
+        function createTime() {
+            var time = new Date();
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+
+            var now = (hour < 10 ? "0"+hour : hour)  + ":" +
+                      (minute < 10 ? "0"+minute : minute )+ ":" +
+                      (second < 10 ? "0"+second : second);
+            clock.innerHTML = now;
+        }
+
+        var arr = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"];
+        var count = 0;
+        function createImg() {
+
+            var img = document.createElement("img");
+            img.src = arr[count];
+            count++;
+            img.classList.add("bgImg");
+
+            //바디 가장마지막 자식을 삭제
+            document.body.removeChild( document.body.lastElementChild );
+            document.body.appendChild(img);
+
+            if(count == arr.length) {
+                count = 0;
+            }
+
+        }
+
+
+        (function() {
+            createTime();
+            window.setInterval(createTime, 1000);
+
+            createImg();
+            window.setInterval(createImg, 3000);
+
+        })();
+
+    </script>
+
+
+</body>
+</html>

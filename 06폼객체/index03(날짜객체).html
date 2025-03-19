@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var date = new Date(); //오늘날짜
+
+        console.log(date);
+        console.log(date.getTime() ) //날짜의 밀리초를 구함 (날짜 연산시에 사용됨)
+
+        var millis = 1742173676859;
+        var today = new Date( millis ); //밀리초 기준 날짜 생성
+        console.log(today);
+
+        var date2 = new Date(2025, 1, 30, 12, 30, 30);
+        console.log(date2);
+
+        //사용되는 함수들
+        console.log("----------------------------------------------------------");
+        console.log( date.toUTCString() ); //UTC시간
+        console.log( date.toISOString() ); //ISO시간
+        console.log( date.toLocaleTimeString() ); //지역시간으로 표시
+
+        console.log("----------------------------------------------------------");
+        console.log( date.getFullYear()  ); //년도
+        console.log( date.getMonth() + 1 ); 
+        console.log( date.getDate()  );
+        console.log( date.getHours()  );
+        console.log( date.getMinutes()  ); 
+        console.log( date.getSeconds()  ); 
+
+
+    </script>
+
+</body>
+</html>

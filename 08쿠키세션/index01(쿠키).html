@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    쿠키이름:<input type="text" id="name">
+    쿠키값:<input type="text" id="value">
+
+    <button type="button" onclick="createCookie()">쿠키생성</button>
+    <button type="button" onclick="getCookie()">쿠키확인하기</button>
+
+
+    <script>
+        var cookieName = document.getElementById("name"); //이름
+        var cookieValue = document.getElementById("value"); //값
+
+        function createCookie() {
+            
+            //시간설정
+            var date = new Date();
+            date.setDate(  date.getDate() + 1 )
+            date.setHours( 9 );
+            date.setMinutes( 0 );
+            date.setSeconds( 0 );
+
+            //쿠키의 생성
+            var cookie = cookieName.value + "=" + cookieValue.value + ";expires=" + date.toUTCString();
+            document.cookie = cookie;
+
+        }
+
+
+        var find = "찾을값";
+        function getCookie() {
+            //console.log(document.cookie); //쿠키를 문자열로 반환함
+
+            var cookies = document.cookie.split("; ");
+            for(var i in cookies) {
+                //console.log(cookies[i]);
+                if(cookies[i].indexOf(find) != -1) { //찾을값이 존재함
+                    var result = cookies[i].replace(find+"=", ""); //찾을값=  을 없앰
+                    console.log("쿠키이름:" + find);
+                    console.log("쿠키값:" + result);
+                }
+            }
+        }
+
+        //쿠키의 삭제는 동일한 쿠키이름을 시간을 현재시간으로 해서 저장하면, 삭제됩니다.
+
+    </script>
+
+</body>
+</html>
