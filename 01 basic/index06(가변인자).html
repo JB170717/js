@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function some(a,b){
+            //argument속성에서 인자값을 받아 쓸 수 있습니다
+            console.log(arguments);
+            console.log('args:'+arguments[0]);
+            console.log('args:'+arguments[1]);
+            
+
+            return a+b;
+        }
+
+        // console.log( some() ); //매개변수를 맞추지않아도 호출은됨 에러는 안남남
+        // console.log( some(1) );
+        // console.log( some(1,2) );
+        console.log( some(1,2,3,12,32,3,3,2) );
+        
+
+    </script>
+
+</body>
+</html>

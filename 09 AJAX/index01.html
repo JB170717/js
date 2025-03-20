@@ -13,6 +13,7 @@
 
     <script>
         function some(){
+
             //1st
             // fetch('hi.txt').then(function(response){
             //     response.text().then(function(data){
@@ -70,7 +71,7 @@
             //5nd - promise chain
             fetch("https://raw.githubusercontent.com/yopy0817/data_example/master/hi.json")
             .then(function(response) {
-                return response.json();
+                return response.json(); /* 콜백의 리턴값은  ->> function-> data에 들어간다다 */
             })
             .then(function(data) {
                 return data;
