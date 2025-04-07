@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    
+    <button type="button" id="getAjax">get방식요청</button>
+    <button type="button" id="postAjax">post방식요청</button>
+
+    <script>
+        $("#getAjax").click(function(){
+            $.ajax({
+                type:"get", //요청타입
+                url:"http://localhost:8181/api/v1/getData?num=170717&name=박종범",
+                success: function(data){ //요청 성공시 실행할 콜백
+                    console.log(data);
+                    
+                },
+                error: function(err, status){ //에러시에 결과를 받을 콜백
+                    console.log(err,status);
+                    
+                }
+            })
+        });
+
+        $("#postAjax").click(function(){
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8181/api/v1/getInfo",
+                contentType:"application/json", //contentType에 아무것도 적지않으면 default가 form타입임임
+                data: JSON.stringify({name:"권수빈", age:20}), //보낼데이터를 작성하는곳
+                success:function(data){
+                    console.log(data);                    
+                },
+                error: function(err, status){
+                    console.log(err, status);                    
+                }                
+            })
+        })
+    </script>
+
+</body>
+</html>

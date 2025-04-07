@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    
+    <div class="demo"></div>
+    <div class="demo-text"></div>
+
+    <script>
+        $(".demo").html("<a href='#'>생성된 a링크</a>") // js의 innerHTML을 대체한다.
+        
+        var result = $(".demo").html(); //innerHTML로 값을 얻기
+
+        console.log(result);
+        
+
+        //순수한 문자열 형태로 삽입입
+        $(".demo-text").text("<a href='#'>생성된 a링크</a>");
+    </script>
+
+</body>
+</html>

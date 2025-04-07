@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    
+    <img src="#" alt="" class="demo1">
+    <img src="#" alt="" class="demo2">
+
+
+    <script>
+
+        //document.querySelector(".demo1").src="img1.jpg"; //js
+        $(".demo1").attr("src","img/1.jpg"); //src속성을 변경
+        $(".demo1").attr("width", 100);
+        $(".demo1").attr("alt", "이미지");
+
+        var result = $(".demo1").attr("src"); //src속성을 얻기기
+        console.log(result);
+
+        //한번에 속성명 바꾸기 //객체접근해서 태그의 모든속성 바꾸기 가능.
+        $(".demo2").attr({
+            src:"img/2.jpg", 
+            alt:"이미진데용",
+            width:200
+        })
+        
+    </script>
+
+</body>
+</html>
